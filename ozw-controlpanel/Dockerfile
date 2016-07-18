@@ -23,10 +23,11 @@ RUN yum update -y && yum groupinstall 'Development Tools' -y && yum install libm
 # Install MongoDB Following the Instructions at MongoDB Docs
 # Ref: http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/
 
-
 RUN adduser ozwcp_user
 RUN usermod -a -G dialout ozwcp_user
 RUN usermod -a -G games ozwcp_user
+RUN groupadd -g 16 dialout2
+RUN usermod -a -G dialout2 ozwcp_user
 
 USER ozwcp_user
 ENV HOME /home/ozwcp_user
